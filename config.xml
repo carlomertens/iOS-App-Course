@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.coenraets.keypoint" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Keypoint</name>
+<widget id="com.planetva.iosappcourse" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>iOS App Course</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
