@@ -1,8 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.planetva.iosappcourse" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<<<<<<< HEAD
     <name>iOS App Development Course</name>
     <description>
         iOS App Development Course - Syntra Limburg
+=======
+    <name>iOS App Course</name>
+    <description>
+        iOS App Course - Syntra.
+>>>>>>> 3ed999a0d87a6f132735b09984210fc3e43f340f
     </description>
     <author email="ludwigheymbeeck@gmail.com" href="http://syntra-limburg.be">
         Ludwig Heymbeeck
