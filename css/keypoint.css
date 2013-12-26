@@ -158,7 +158,10 @@ td {
 }
 
 .paddingleft {
-	padding-left: 200px;
+	/* padding-left: 200px; */
+	width: 800px;
+	margin: auto;
+	padding: auto;
 }
 
 img.full {
