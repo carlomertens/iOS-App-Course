@@ -45,7 +45,7 @@
 
 <div class="slide">
     <h1>Me</h1>
-    <div style="text-align: left">
+    <div style="text-align: left" class="paddingleft">
         <p><span class="topcoat-icon icon--user"></span>Ludwig Heymbeeck</p>
         <p><span class="topcoat-icon icon--email"></span>ludwigheymbeeck@gmail.com</p>
         <p><span class="topcoat-icon icon--twitter"></span>@ludwigheymbeeck</p>
@@ -55,13 +55,13 @@
 
 <div class="slide">
     <h1 style="padding-bottom: 10px;">You</h1>
-    <img id="audience-pic"/>
+    <div class="paddingleft"><img id="audience-pic"/></div>
     <button class="topcoat-button picture-btn"><span class="topcoat-icon icon--camera"></span></button>
 </div>
 
 <div class="slide">
     <h1>Overzicht cursus</h1>
-    <ul>
+    <ul class="paddingleft">
         <li>Mobile App Ontwikkeling: overzicht</li>
         <li>Wat is Phonegap / Apache Cordova?</li>
         <li>Opzetten van ontwikkelomgeving met Phonegap</li>
@@ -71,7 +71,7 @@
 
 <div class="slide">
     <h1>Mobile App Ontwikkeling: overzicht</h1>
-    <ul>
+    <ul class="paddingleft">
         <li>tabel overzicht</li>
         <li>html5 - native - hybrid</li>
     </ul>
@@ -114,6 +114,7 @@
 
 <div class="slide">
     <h1>Multi-Page vs Single-Page Architecture</h1>
+    <div class="paddingleft">
     <table style="width: 900px;">
         <thead>
         <tr>
@@ -150,11 +151,12 @@
         </tr>
         </tbody>
     </table>
+    </div>
 </div>
 
 <div class="slide">
     <h1>New Challenges</h1>
-    <ul>
+    <ul class="paddingleft">
         <li>Create large, complex apps in JavaScript</li>
         <li>Avoid problems in a long lived DOM</li>
         <li>Create complex UI in JavaScript</li>
@@ -168,6 +170,7 @@
 
 <div class="slide">
     <h1>Evaluating Frameworks</h1>
+    <div class="paddingleft">
     <table style="width: 900px;">
         <tr><td></td><td>Scope</td><td>Declarative</td><td>Prescriptive</td><td>Ready</td></tr>
         <tr><td>jQuery Mobile</td><td><img src="images/veryhigh.png"/></td><td><img src="images/veryhigh.png"/></td><td><img src="images/veryhigh.png"/></td><td><img src="images/veryhigh.png"/></td></tr>
@@ -175,12 +178,13 @@
         <tr><td>Angular.js</td><td><img src="images/moderate.png"/></td><td><img src="images/veryhigh.png"/></td><td><img src="images/high.png"/></td><td><img src="images/veryhigh.png"/></td></tr>
         <tr><td>Ember</td><td><img src="images/low.png"/></td><td><img src="images/low.png"/></td><td><img src="images/high.png"/></td><td><img src="images/moderate.png"/></td></tr>
     </table>
+    </div>
 </div>
 
 <div class="slide">
     <h1>Ontwikkelomgeving met Phonegap</h1>
     <h4>Mogelijkheden:</h4>
-    <ul>
+    <ul class="paddingleft">
         <li>remote: met Phonegap Build en github</li>
         <li>local: met Phonegap en Xcode</li>
     </ul>
@@ -188,7 +192,7 @@
 
 <div class="slide">
     <h1>Met Phonegap Build en github</h1>
-    <ul>
+    <ul class="paddingleft">
 		<li>Installatie van git</li>
 		<li>Aanmaak van github account</li>
 		<li>Aanmaak van phonegap account</li>
@@ -198,7 +202,7 @@
 
 <div class="slide">
     <h1>Met Phonegap en Xcode</h1>
-    <ul>
+    <ul class="paddingleft">
 		<li>Installatie van Xcode</li>
 		<li>iOS SDK installatie</li>
 		<li>phonegap (local) installatie</li>
@@ -232,7 +236,7 @@ $.get("product.php?id=101").done(function(page) {
 
 <div class="slide">
     <h1>Fast</h1>
-    <ul>
+    <ul class="paddingleft">
         <li>Create the UI in JavaScript at the client-side</li>
         <li>Insert/remove views into/from the DOM as needed</li>
     </ul>
@@ -274,7 +278,7 @@ $.ajax({url: "services/states"}).done(function(data) {
 
 <div class="slide">
     <h1>Cache Static Data</h1>
-    <ul>
+    <ul class="paddingleft">
         <li>LocalStorage</li>
         <li>Database</li>
         <li>File</li>
@@ -349,7 +353,7 @@ $("#page").animate();
 </div>
 
 <div class="slide">
-    <div style="position:relative; width: 1024px; height: 600px;">
+    <div style="position:relative; width: 1024px; height: 600px;" class="paddingleft">
         <img id="phone" src="images/iphone5.png" style="position: absolute;left:349px;top:0px;width: 326px;"/>
         <div id="pageA" class="page page-left" style="background-color:red">
             <a class="topcoat-button" onclick="javascript:slide('pageA', 'page-left')">Left</a>
@@ -464,7 +468,7 @@ $("#page").animate();
 
 <div class="slide">
     <h1>Fast</h1>
-    <ul class="topcoat-list" style="width: 400px;">
+    <ul class="topcoat-list" style="width: 400px;margin: auto;">
         <li class="topcoat-list__item"><a href="#" class="fastclick">Item 1</a></li>
         <li class="topcoat-list__item"><a href="#" class="fastclick">Item 2</a></li>
         <li class="topcoat-list__item"><a href="#" class="fastclick">Item 3</a></li>
@@ -531,7 +535,7 @@ $("#page").animate();
 
 <div class="slide">
     <h1>Optimizing Images</h1>
-    <ul>
+    <ul class="paddingleft">
         <li>Use the right image size (don't scale images in HTML)</li>
         <li>Host images on scalable, distributed systems (i.e. S3)</li>
         <li>Avoid 404s for images</li>
@@ -549,7 +553,7 @@ $("#page").animate();
 </div>
 
 <div class="slide">
-    <ul>
+    <ul class="paddingleft">
         <li>box-shadow</li>
         <li>border-radius</li>
         <li>gradients</li>
@@ -565,7 +569,7 @@ $("#page").animate();
 
 <div class="slide">
     <h1>Minimizing Browser Reflows</h1>
-    <ul>
+    <ul class="paddingleft">
         <li>Reduce the number of DOM elements</li>
         <li>Minimize access to the DOM</li>
         <li>Update elements "offline" before reinserting into DOM</li>
@@ -601,7 +605,7 @@ $backButton.attr("href", "#");
 
 <div class="slide">
     <h1>Framework Considerations</h1>
-    <ul style="padding: 0 60px;">
+    <ul style="padding: 0 60px;" class="paddingleft">
         <li>Don't use a full-stack framework just because you like a small piece of it (i.e. transitions our UI components)</li>
         <li>Understand the performance characteristics of libraries you use</li>
     </ul>
@@ -631,7 +635,7 @@ $backButton.attr("href", "#");
 <div class="slide summary">
     <h1>Summary</h1>
     <!-- <ol reversed> -->
-	<ol>
+	<ol class="paddingleft">
         <li>Don't generate the UI on the server</li>
         <li>Limit network access</li>
         <li>Don't wait for the data to display the UI</li>

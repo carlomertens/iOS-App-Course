@@ -157,6 +157,10 @@ td {
     padding-bottom: 8px;
 }
 
+.paddingleft {
+	padding-left: 200px;
+}
+
 img.full {
     max-width: 900px;
     max-height: 600px;
