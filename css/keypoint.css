@@ -38,6 +38,10 @@ table {
     border-collapse: collapse;
 }
 
+.fragment {
+	font-size: 1.5rem;
+}
+
 td {
     border: solid 1px #aaa;
     width: 250px;
