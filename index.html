@@ -114,25 +114,25 @@
 </div>
 
 <div class="slide">
-    <h1>Wat is PhoneGap?</h1>
+    <h1>Wat is PhoneGap/Cordova?</h1>
     <h2>Web App</h2>
     <img src="images/webapp.png" class="full"/><br/>
 </div>
 
 <div class="slide">
-    <h1>Wat is PhoneGap?</h1>
+    <h1>Wat is PhoneGap/Cordova?</h1>
     <h2>Wrapper</h2>
     <img src="images/wrapper.png" class="full"/><br/>
 </div>
 
 <div class="slide">
-    <h1>Wat is PhoneGap?</h1>
+    <h1>Wat is PhoneGap/Cordova?</h1>
     <h2>Bridge</h2>
     <img src="images/wrapper-bridge.png" class="full"/><br/>
 </div>
 
 <div class="slide">
-    <h1>Ontwikkelomgeving met PhoneGap</h1>
+    <h1>Ontwikkelomgeving</h1>
     <div class="paddingleft">
     <table style="width: 900px;">
         <thead>
@@ -146,7 +146,7 @@
         <tr class="fragment">
             <td>Tools</td>
             <td>PhoneGap Build / GitHub</td>
-            <td>PhoneGap / Xcode</td>
+            <td>Cordova / Xcode</td>
         </tr>
         <tr class="fragment">
             <td>Platforms</td>
@@ -156,7 +156,7 @@
         <tr class="fragment">
             <td>SDKs</td>
             <td>Not always latest</td>
-            <td>Up-to-date SDKs (manual install)</td>
+            <td>Up-to-date SDKs<br>(manual installation)</td>
         </tr>
         <tr class="fragment">
             <td>Simulators</td>
@@ -176,24 +176,28 @@
 <div class="slide">
     <h1>REMOTE: PhoneGap Build en GitHub</h1>
     <ul class="paddingleft">
-		<li>Installatie van git</li>
+		<li>Installatie van (local) git (built into Xcode)</li>
 		<li>Aanmaak van GitHub account</li>
 		<li>Aanmaak van PhoneGap Build account</li>
-		<!-- <li>De phonegap-start App</li> -->
-    </ul>
-</div>
-
-<div class="slide">
-    <h1>LOCAL: PhoneGap en Xcode</h1>
-    <ul class="paddingleft">
-		<li>Installatie van Xcode</li>
-		<li>iOS SDK installatie<br>
-		(laatste versie van iOS SDK zit in Xcode)</li>
 		<li>PhoneGap (local) installatie</li>
 		<ol class="paddingleft">
 			<li>installatie van NodeJS: www.nodejs.org</li>
 			<li>installatie van PhoneGap: <br /><strong>sudo npm install -g phonegap</strong></li>
 			<li>phonegap -v</li>
+		</ol>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>LOCAL: Cordova en Xcode</h1>
+    <ul class="paddingleft">
+		<li>Installatie van Xcode</li>
+		<li>iOS SDK installatie	(laatste versie zit in Xcode)</li>
+		<li>Cordova installatie</li>
+		<ol class="paddingleft">
+			<li>installatie van NodeJS: www.nodejs.org</li>
+			<li>installatie van Cordova: <br /><strong>sudo npm install -g cordova</strong></li>
+			<li>cordova -v</li>
 		</ol>
 		<!-- <li>De phonegap-start App</li> -->
     </ul>
@@ -201,12 +205,10 @@
 
 <div class="slide">
     <h1>Let's code!</h1>
-<pre class="prettyprint">
-Installeer de locale ontwikkelomgeving met NodeJS, Xcode, en PhoneGap
-</pre>
-<pre class="prettyprint">
-Installeer de remote ontwikkelomgeving met GitHub en PhoneGap Build
-</pre>
+    <ul class="paddingleft">
+		<li>Installeer de locale ontwikkelomgeving met NodeJS, Xcode, en Cordova</li>
+		<li>Installeer de remote ontwikkelomgeving met GitHub en PhoneGap Build</li>
+    </ul>
 </div>
 
 <div class="slide">
@@ -266,6 +268,51 @@ Installeer de remote ontwikkelomgeving met GitHub en PhoneGap Build
         </tbody>
     </table>
     </div>
+</div>
+
+<div class="slide">
+    <h1>Let's code!</h1>
+    <ul class="paddingleft">
+		<li>Ontwikkel de eerste App!</li>
+		<li>Voer het volgende commando uit:<br>
+		<strong>cordova create myapp com.syntra.myapp myapp</strong></li>
+		<li>Bestudeer de directory en file structuur die aangemaakt werd</li>
+		<li>Installeer iOS platform:<br>
+		<strong>cd myapp; cordova platforms add ios</strong></li>
+		<li>Run de App (device of simulator):<br>
+		<strong>cordova run ios</strong><br>
+		(sudo npm install ios-sim -g)</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Cordova File Structure</h1>
+    <img src="images/cordova3filestructure.png"/>
+</div>
+
+<div class="slide">
+    <h1>Cordova iOS File Structure</h1>
+    <img src="images/cordova3filestructurewithiosplatform.png"/>
+</div>
+
+<div class="slide">
+    <h1>Xcode - identity</h1>
+    <img src="images/xcode-myapp-identity.png"/>
+</div>
+
+<div class="slide">
+    <h1>Xcode - deployment</h1>
+    <img src="images/xcode-myapp-deploymentinfo.png"/>
+</div>
+
+<div class="slide">
+    <h1>Xcode - launch images</h1>
+    <img src="images/xcode-myapp-launchimages.png"/>
+</div>
+
+<div class="slide">
+    <h1>Xcode - icons</h1>
+    <img src="images/xcode-myapp-appicons.png"/>
 </div>
 
 <div class="slide">
@@ -343,6 +390,7 @@ $.get("product.php?id=101").done(function(page) {
     </ul>
 </div>
 
+<!--
 <div class="slide">
 <h1>Single Page Application</h1>
 <xmp class="prettyprint large">
@@ -357,6 +405,7 @@ $.get("product.php?id=101").done(function(page) {
     </html>
 </xmp>
 </div>
+-->
 
 <div class="slide">
     <h1>Slow</h1>
@@ -532,10 +581,12 @@ $("#page").animate();
 </pre>
 </div>
 
+<!--
 <div class="slide">
     <h1>PageSlider</h1>
     https://github.com/ccoenraets/PageSlider
 </div>
+-->
 
 <div class="slide">
 <h1>Use Native Scrolling</h1>
@@ -721,18 +772,23 @@ $backButton.attr("href", "#");
 </div>
 
 <div class="slide">
-    <h1>Chrome Dev Tools Demo</h1>
+    <h1>Debugging</h1>
+    <p>Chrome Ripple</p>
+</div>
+
+<div class="slide">
+    <h1>Debugging: Chrome Dev Tools Demo</h1>
     <img src="images/timeline.jpg" class="full"/>
 </div>
 
 <div class="slide">
-    <h1>Chrome Dev Tools Demo</h1>
+    <h1>Debugging: Chrome Dev Tools Demo</h1>
     <img src="images/dev-tools.jpg"/>
 </div>
 
 <div class="slide">
     <h1>On-Device Debugging Demo</h1>
-    <img src="images/safari.png" height="500"/>
+    <p>Safari Web Inspector</p>
 </div>
 
 <div class="slide summary">
