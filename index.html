@@ -394,6 +394,9 @@
 <div class="slide">
 	<h1>Let's Code! <br>Add Native Notification</h1>
 <xmp class="prettyprint xsmall">
+	
+zie ook op: http://bit.ly/1foeXlq
+	
 	1. add native dialog to app: cordova plugin add org.apache.cordova.dialogs
 	
 	2. add <script src="cordova.js"></script> to bottom of index.html
@@ -482,6 +485,7 @@ Advantages are:
 <div class="slide">
 	<h1>Let's Code! Use SPA</h1>
 <xmp class="prettyprint xsmall">
+zie ook op: http://bit.ly/1d3VrYr
 	1. continu to use Employees Database Directory example
 	2. in index.html: remove the HTML markup inside the body tag 
 	   (with the exception of the script tags).
@@ -523,43 +527,12 @@ HTML template solutions: e.g. Mustache.js, Handlebars.js, and Underscore.js.
 </div>
 
 <div class="slide">
-	<h1>Let's Code! Use Templates</h1>
-<xmp class="prettyprint xsmall">
-	1. continu to use Employees Database Directory example
-	2. in index.html: add script tag to include the handlebars.js library:  
-	       <script src="lib/handlebars.js"></script>
-	3. in index.html: create HTML template to render the Home View. 
-	   add following script tag as first child of the body tag:
-		<script id="home-tpl" type="text/x-handlebars-template">
-			<div class="topcoat-navigation-bar">
-				<div class="topcoat-navigation-bar__item center full">
-					<h1 class="topcoat-navigation-bar__title">Employee Directory</h1>
-				</div>
-			</div>
-			<div class="search-bar">
-				<input type="search" placeholder="search" class="topcoat-search-input search-key">
-			</div>
-			<div class="topcoat-list__container">
-				<ul class="topcoat-list list employee-list"></ul>
-			</div>
-		</script>
-	4. create HTML template to render the employee list items. Add following script tag 
-	   immediately after the previous one:
-		<script id="employee-li-tpl" type="text/x-handlebars-template">
-			{{#.}}
-			<li class="topcoat-list__item">
-				<a href="#employees/{{id}}">
-					<img src="assets/pics/{{pic}}">
-					<p>{{firstName}} {{lastName}}</p>
-					<p>{{title}}</p>
-					<span class="chevron"></span><span class="count">{{reports}}</span>
-				</a>
-			</li>
-			{{/.}}
-		</script>
-	5. add topcoat-mobile-light.css and styles.css to the head of index.html:
-		<link href="assets/topcoat/css/topcoat-mobile-light.css" rel="stylesheet">
-		<link href="assets/css/styles.css" rel="stylesheet">
+	<h1>Let's Code! <br>Use Templates</h1>
+<xmp class="prettyprint">
+	
+Lees de instructies op:
+	
+	http://bit.ly/1fod3Bw
 </xmp>
 </div>
 
