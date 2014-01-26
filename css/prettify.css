@@ -127,19 +127,26 @@ pre.prettyprint {
     margin: 0px;
 }
 
+p.large,
 xmp.large,
 pre.large {
     font-size: 38px;
 }
 
+p.small,
 xmp.small,
 pre.small {
     font-size: 22px;
 }
 
+p.xsmall,
 xmp.xsmall,
 pre.xsmall {
     font-size: 18px;
+}
+
+ul.small {
+    font-size: 22px;
 }
 
 /* Specify class=linenums on a pre to get line numbering */

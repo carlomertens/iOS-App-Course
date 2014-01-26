@@ -229,7 +229,7 @@
 </div>
 
 <div class="slide">
-<h1>New School: Single Page Application</h1>
+<h1>New School: Single Page Application (SPA)</h1>
 <xmp class="prettyprint large"><html>
 <head>
     <title>My App</title>
@@ -328,7 +328,7 @@
 </div>
 
 <div class="slide">
-    <h1>New Challenges</h1>
+    <h1>New Challenges For SPAs</h1>
     <ul class="paddingleft">
         <li>Create large, complex apps in JavaScript</li>
         <li>Avoid problems in a long lived Document Object Model (DOM)</li>
@@ -355,8 +355,8 @@
 </div>
 
 <div class="slide">
-    <h1>Hybrid App Development Considerations</h1>
-    <ul class="paddingleft">
+    <h1>Hybrid App Development <br>Considerations</h1>
+    <ul class="paddingleft small">
         <li>Abstract data access</li>
 		<li>Keep Application browser runnable</li>
 		<li>Use single page application</li>
@@ -368,6 +368,199 @@
 		<li>Hide HTMLish behaviors</li>
 		<li>Architect for performance</li>
     </ul>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>App Development Example</h1>
+	<p>Employees Database Directory</p>
+    <ol class="paddingleft">
+        <li>download files from ....</li>
+		<li>install locally in cordova file structure</li>
+		<li>run/test app</li>
+    </ol>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>Choose Local Storage</h1>
+	<p class="paddingleft">Explore different persistence mechanisms:<br><br></p>
+    <ol class="paddingleft">
+        <li>MemoryAdapter (default)</li>
+		<li>JSONPAdapter</li>
+		<li>LocalStorageAdapter</li>
+		<li>WebSqlAdapter</li>
+    </ol>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>Add Native Notification</h1>
+<xmp class="prettyprint xsmall">
+	1. add native dialog to app: cordova plugin add org.apache.cordova.dialogs
+	
+	2. add <script src="cordova.js"></script> to bottom of index.html
+
+	3. add following code to "Event Registration" block: 
+		document.addEventListener('deviceready', function () {
+			if (navigator.notification) { // Override default HTML alert
+				window.alert = function (message) {
+					navigator.notification.alert(
+						message,    // message
+						null,       // callback
+						"Workshop", // title
+						'OK'        // buttonName
+					);
+				};
+			}
+		}, false);
+
+	4. test/run application
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Slow (default) Click</h1>
+    <ul class="topcoat-list" style="width: 400px;margin: auto;">
+        <li class="topcoat-list__item"><a href="#" class="needsclick">Item 1</a></li>
+        <li class="topcoat-list__item"><a href="#" class="needsclick">Item 2</a></li>
+        <li class="topcoat-list__item"><a href="#" class="needsclick">Item 3</a></li>
+    </ul>
+    <p><a class="topcoat-button--large slow-btn needsclick" href="#">Click Me</a></p>
+    <div id="log-slow" style="margin-top:20px;">click: 0ms</div>
+    <p style="font-size: 24px; color: #999;">To experience the 300ms delay, tap quickly (don't "long-tap")</p>
+</div>
+
+<div class="slide">
+    <h1>Fast Click <br>Avoid Click Event's 300ms Delay</h1>
+    <ul class="topcoat-list" style="width: 400px;margin: auto;">
+        <li class="topcoat-list__item"><a href="#" class="fastclick">Item 1</a></li>
+        <li class="topcoat-list__item"><a href="#" class="fastclick">Item 2</a></li>
+        <li class="topcoat-list__item"><a href="#" class="fastclick">Item 3</a></li>
+    </ul>
+    <p><a class="topcoat-button--large slow-btn fastclick" href="#">Click Me</a></p>
+    <div id="log-fast" class="log" style="margin-top:20px;">touch end: 0ms</div>
+</div>
+
+<div class="slide">
+    <h1>FastClick</h1>
+    <h2><a href="https://github.com/ftlabs/fastclick" target="_system">https://github.com/ftlabs/fastclick</a></h2>
+    <p style="padding: 0 60px;">“FastClick uses document.createEvent to fire a synthetic click event as soon as touchend is fired. It then suppresses the additional click event created by the browser.”</p>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>Avoid Click Delay</h1>
+<xmp class="prettyprint xsmall">
+	1. continu to use Employees Database Directory example
+	
+	2. test the application on your iOS device or in the iOS emulator
+	   tap the Help button and notice the delay
+
+	3. add the following script tag: <script src="lib/fastclick.js"></script>
+	
+	4. in app.js, register FastClick inside the deviceready event handler:
+	   FastClick.attach(document.body);
+
+	5. test/run application
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Use Single-Page Application</h1>
+<xmp class="prettyprint xsmall">
+Single-Page Application (SPA) = web application that lives within a single HTML page
+
+Application views are injected into and removed from the DOM as needed 
+
+Advantages are:
+
+    1. Absence of page refreshes provides more fluid and closer to 
+       native experience
+
+    2. UI is entirely created at client-side: ideal architecture for 
+       applications that work offline.
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! Use SPA</h1>
+<xmp class="prettyprint xsmall">
+	1. continu to use Employees Database Directory example
+	2. in index.html: remove the HTML markup inside the body tag 
+	   (with the exception of the script tags).
+	3. inside the immediate function in app.js, define a function named renderHomeView() 
+	   (right after the findByName function): 
+	   function renderHomeView() {
+		  var html =
+			 "<h1>Directory</h1>" +
+			 "<input class='search-key' type='search' placeholder='Enter name'/>" +
+			 "<ul class='employee-list'></ul>";
+		  $('body').html(html);
+		  $('.search-key').on('keyup', findByName);
+	   }
+	4. modify the data adapter initialization logic: when the adapter has been initialized, 
+	   call the renderHomeView() function to programmatically display the Home View:	
+		var adapter = new MemoryAdapter();
+		adapter.initialize().done(function () {
+			renderHomeView();
+		});
+	5. make sure you remove the original event registration in the Event Registration section.
+	6. remove the click event handler for the help button (in the Event Registration section).
+	7. test the application.
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Use Templates</h1>
+<xmp class="prettyprint xsmall">
+Writing HTML fragments in JavaScript and programmatically inserting 
+them into the DOM results in:
+
+	1. harder to write code
+	2. harder to maintain code
+	
+HTML templates address this by decoupling UI (HTML markup) from code.
+ 
+HTML template solutions: e.g. Mustache.js, Handlebars.js, and Underscore.js.
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! Use Templates</h1>
+<xmp class="prettyprint xsmall">
+	1. continu to use Employees Database Directory example
+	2. in index.html: add script tag to include the handlebars.js library:  
+	       <script src="lib/handlebars.js"></script>
+	3. in index.html: create HTML template to render the Home View. 
+	   add following script tag as first child of the body tag:
+		<script id="home-tpl" type="text/x-handlebars-template">
+			<div class="topcoat-navigation-bar">
+				<div class="topcoat-navigation-bar__item center full">
+					<h1 class="topcoat-navigation-bar__title">Employee Directory</h1>
+				</div>
+			</div>
+			<div class="search-bar">
+				<input type="search" placeholder="search" class="topcoat-search-input search-key">
+			</div>
+			<div class="topcoat-list__container">
+				<ul class="topcoat-list list employee-list"></ul>
+			</div>
+		</script>
+	4. create HTML template to render the employee list items. Add following script tag 
+	   immediately after the previous one:
+		<script id="employee-li-tpl" type="text/x-handlebars-template">
+			{{#.}}
+			<li class="topcoat-list__item">
+				<a href="#employees/{{id}}">
+					<img src="assets/pics/{{pic}}">
+					<p>{{firstName}} {{lastName}}</p>
+					<p>{{title}}</p>
+					<span class="chevron"></span><span class="count">{{reports}}</span>
+				</a>
+			</li>
+			{{/.}}
+		</script>
+	5. add topcoat-mobile-light.css and styles.css to the head of index.html:
+		<link href="assets/topcoat/css/topcoat-mobile-light.css" rel="stylesheet">
+		<link href="assets/css/styles.css" rel="stylesheet">
+</xmp>
 </div>
 
 <div class="slide">
@@ -614,41 +807,6 @@ $("#page").animate();
 }
 </xmp>
 </div>
-
-<div class="slide">
-    <h1>Slow</h1>
-    <ul class="topcoat-list" style="width: 400px;margin: auto;">
-        <li class="topcoat-list__item"><a href="#" class="needsclick">Item 1</a></li>
-        <li class="topcoat-list__item"><a href="#" class="needsclick">Item 2</a></li>
-        <li class="topcoat-list__item"><a href="#" class="needsclick">Item 3</a></li>
-    </ul>
-    <p><a class="topcoat-button--large slow-btn needsclick" href="#">Click Me</a></p>
-    <div id="log-slow" style="margin-top:20px;">click: 0ms</div>
-    <p style="font-size: 24px; color: #999;">To experience the 300ms delay, tap quickly (don't "long-tap")</p>
-</div>
-
-<div class="slide">
-    <div class="count">#6</div>
-    <h1>Avoid Click Event's 300ms Delay</h1>
-</div>
-
-<div class="slide">
-    <h1>Fast</h1>
-    <ul class="topcoat-list" style="width: 400px;margin: auto;">
-        <li class="topcoat-list__item"><a href="#" class="fastclick">Item 1</a></li>
-        <li class="topcoat-list__item"><a href="#" class="fastclick">Item 2</a></li>
-        <li class="topcoat-list__item"><a href="#" class="fastclick">Item 3</a></li>
-    </ul>
-    <p><a class="topcoat-button--large slow-btn fastclick" href="#">Click Me</a></p>
-    <div id="log-fast" class="log" style="margin-top:20px;">touch end: 0ms</div>
-</div>
-
-<div class="slide">
-    <h1>FastClick</h1>
-    <h2><a href="https://github.com/ftlabs/fastclick" target="_system">https://github.com/ftlabs/fastclick</a></h2>
-    <p style="padding: 0 60px;">“FastClick uses document.createEvent to fire a synthetic click event as soon as touchend is fired. It then suppresses the additional click event created by the browser.”</p>
-</div>
-
 
 <div class="slide">
     <h1>Slow</h1>
