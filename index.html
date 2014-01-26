@@ -361,7 +361,7 @@
 		<li>Keep Application browser runnable</li>
 		<li>Use single page application</li>
 		<li>Use templates</li>
-		<li>Use MV* architecture</li>
+		<li>Use MV* architecture (Model, View, *: collections, routers, controllers...)</li>
 		<li>Consider a framework</li>
 		<li>Implement routing</li>
 		<li>Abstract device features</li>
@@ -528,11 +528,215 @@ HTML template solutions: e.g. Mustache.js, Handlebars.js, and Underscore.js.
 
 <div class="slide">
 	<h1>Let's Code! <br>Use Templates</h1>
-<xmp class="prettyprint">
-	
-Lees de instructies op:
+<xmp class="prettyprint large">
+Instructies op:
 	
 	http://bit.ly/1fod3Bw
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Creating a View Class</h1>
+<xmp class="prettyprint">
+It’s time to provide the application with some structure. 
+If we keep adding all the core functions of the application to the 
+immediate function that bootstraps the app, it will very quickly grow 
+out of control. 
+
+In this section we create a HomeView object that encapsulates the 
+logic to create and render the Home view.
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>View Class Creation</h1>
+<xmp class="prettyprint">
+Step 1: Create the HomeView Class
+	
+	http://bit.ly/1i1pc1w
+	
+Step 2: Using the Home View
+
+	http://bit.ly/1dH4Bu9
+
+</xmp>
+</div>
+
+<div class="slide">
+<h1>Use Native Scrolling</h1>
+<xmp class="prettyprint xsmall">
+	#scroller {
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		position: absolute;
+		top: 48px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+	}
+	
+	Test the application. Specifically, test the list behavior 
+	when the list is bigger than the browser window (or the screen). 
+	Notice that the entire view (including the header) is scrolling.
+	
+	If the platforms you target support touch-based scrolling of fixed 
+	regions, this approach is all you need. If not, you’ll need to implement 
+	a programmatic approach, typically with the help of a library 
+	such as iScroll
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>Native Scrolling</h1>
+<xmp class="prettyprint xsmall">
+To anchor the header at the top of the screen, and scroll the employee list only:
+1. in Home Page template, add css class scroller to the div surrounding the employee list ul.
+	<div class="topcoat-list__container scroller">
+		<ul class="topcoat-list list employee-list"></ul>
+	</div>
+2. in assets/css/styles.css define the scroller class as follows:
+	.scroller {
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		position: absolute;
+		top: 141px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+	}
+3. test the application
+
+On iOS, you can still scroll down the web view (including the header). To disable this behavior, 
+open config.xml in the workshop/www folder and add the following preference as the last line 
+within the widget tag:
+	<preference name="DisallowOverscroll" value="true" />
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Implement Routing</h1>
+<xmp class="prettyprint xsmall">
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>Use Routing</h1>
+<xmp class="prettyprint xsmall">
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Using Device APIs</h1>
+<xmp class="prettyprint xsmall">
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>Using Device APIs</h1>
+<xmp class="prettyprint xsmall">
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Sliding Pages with CSS Transitions</h1>
+    <div style="position:relative; width: 1024px; height: 600px;" class="paddingleft">
+        <img id="phone" src="images/iphone5.png" style="position: absolute;left:349px;top:0px;width: 326px;"/>
+        <div id="pageA" class="page page-left" style="background-color:red">
+            <a class="topcoat-button" onclick="javascript:slide('pageA', 'page-left')">Left</a>
+            <a class="topcoat-button" onclick="javascript:slide('pageA', 'page-center')">Center</a>
+            <a class="topcoat-button" onclick="javascript:slide('pageA', 'page-right')">Right</a>
+            <br/>
+            <br/>
+            <br/>
+            <span id="pageAclass">class="left"</span>
+        </div>
+        <div id="pageB" class="page page-center" style="background-color: green">
+            <a class="topcoat-button" onclick="javascript:slide('pageB', 'page-left')">Left</a>
+            <a class="topcoat-button" onclick="javascript:slide('pageB', 'page-center')">Center</a>
+            <a class="topcoat-button" onclick="javascript:slide('pageB', 'page-right')">Right</a>
+            <br/>
+            <br/>
+            <br/>
+            <span id="pageBclass">class="center"</span>
+        </div>
+        <div id="pageC" class="page page-right" style="background-color: blue">
+            <a class="topcoat-button" onclick="javascript:slide('pageC', 'page-left')">Left</a>
+            <a class="topcoat-button" onclick="javascript:slide('pageC', 'page-center')">Center</a>
+            <a class="topcoat-button" onclick="javascript:slide('pageC', 'page-right')">Right</a>
+            <br/>
+            <br/>
+            <br/>
+            <span id="pageCclass">class="right"</span>
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+<h1>Slow</h1>
+<xmp class="prettyprint small">
+.page {
+    position: absolute;top: 0;left: 0;width: 100%;height: 100%;
+}
+.left {
+    left: -100%;
+}
+.center {
+    left: 0;
+}
+.right {
+    left: 100%;
+}
+.transition {
+    transition-duration: .25s;
+}
+</xmp>
+</div>
+
+
+<div class="slide">
+    <h1>Fast (Hardware Acceleration)</h1>
+<pre class="prettyprint small">
+.page {
+    position: absolute;top: 0;left: 0;width: 100%;height: 100%;
+    transform: translate3d(0, 0, 0);
+}
+.left {
+    transform: translate3d(-100%, 0, 0);
+}
+.center {
+    transform: translate3d(0, 0, 0);
+}
+.right {
+    transform: translate3d(100%, 0, 0);
+}
+.transition {
+    transition-duration: .25s;
+}
+</pre>
+</div>
+
+<div class="slide">
+	<h1>Let's Code! <br>Sliding Pages with CSS Transitions</h1>
+<xmp class="prettyprint xsmall">
+modify index.html as follows:
+
+	1. add pageslider.css inside the head tag in index.html:
+		<link href="assets/css/pageslider.css" rel="stylesheet">
+
+	2. add a script tag to include the pageslider.js library:
+		<script src="lib/pageslider.js"></script>
+		
+		PageSlider is a micro library on GitHub: https://github.com/ccoenraets/PageSlider
+
+modify app.js as follows:
+
+	1. in the Local Variables section, declare an instance of the PageSlider object as follows:
+		var slider = new PageSlider($('body'));
+	2. in the route() function, replace the calls to $(‘body’).html() with calls to 
+	   slider.slidePage() passing the same argument to the function.
+		slider.slidePage(new HomeView(adapter, homeTpl, employeeLiTpl).render().el);
+	and
+		slider.slidePage(new EmployeeView(adapter, employeeTpl, employee).render().el);
 </xmp>
 </div>
 
@@ -677,109 +881,12 @@ $("#page").animate();
 </pre>
 </div>
 
-<div class="slide">
-    <div class="count">#7</div>
-    <h1>Use CSS Transitions<br/>+<br/>Hardware Acceleration</h1>
-</div>
-
-<div class="slide">
-    <div style="position:relative; width: 1024px; height: 600px;" class="paddingleft">
-        <img id="phone" src="images/iphone5.png" style="position: absolute;left:349px;top:0px;width: 326px;"/>
-        <div id="pageA" class="page page-left" style="background-color:red">
-            <a class="topcoat-button" onclick="javascript:slide('pageA', 'page-left')">Left</a>
-            <a class="topcoat-button" onclick="javascript:slide('pageA', 'page-center')">Center</a>
-            <a class="topcoat-button" onclick="javascript:slide('pageA', 'page-right')">Right</a>
-            <br/>
-            <br/>
-            <br/>
-            <span id="pageAclass">class="left"</span>
-        </div>
-        <div id="pageB" class="page page-center" style="background-color: green">
-            <a class="topcoat-button" onclick="javascript:slide('pageB', 'page-left')">Left</a>
-            <a class="topcoat-button" onclick="javascript:slide('pageB', 'page-center')">Center</a>
-            <a class="topcoat-button" onclick="javascript:slide('pageB', 'page-right')">Right</a>
-            <br/>
-            <br/>
-            <br/>
-            <span id="pageBclass">class="center"</span>
-        </div>
-        <div id="pageC" class="page page-right" style="background-color: blue">
-            <a class="topcoat-button" onclick="javascript:slide('pageC', 'page-left')">Left</a>
-            <a class="topcoat-button" onclick="javascript:slide('pageC', 'page-center')">Center</a>
-            <a class="topcoat-button" onclick="javascript:slide('pageC', 'page-right')">Right</a>
-            <br/>
-            <br/>
-            <br/>
-            <span id="pageCclass">class="right"</span>
-        </div>
-    </div>
-</div>
-
-<div class="slide">
-<h1>Slow</h1>
-<xmp class="prettyprint small">
-.page {
-    position: absolute;top: 0;left: 0;width: 100%;height: 100%;
-}
-.left {
-    left: -100%;
-}
-.center {
-    left: 0;
-}
-.right {
-    left: 100%;
-}
-.transition {
-    transition-duration: .25s;
-}
-</xmp>
-</div>
-
-
-<div class="slide">
-    <h1>Fast</h1>
-<pre class="prettyprint small">
-.page {
-    position: absolute;top: 0;left: 0;width: 100%;height: 100%;
-    transform: translate3d(0, 0, 0);
-}
-.left {
-    transform: translate3d(-100%, 0, 0);
-}
-.center {
-    transform: translate3d(0, 0, 0);
-}
-.right {
-    transform: translate3d(100%, 0, 0);
-}
-.transition {
-    transition-duration: .25s;
-}
-</pre>
-</div>
-
 <!--
 <div class="slide">
     <h1>PageSlider</h1>
     https://github.com/ccoenraets/PageSlider
 </div>
 -->
-
-<div class="slide">
-<h1>Use Native Scrolling</h1>
-<xmp class="prettyprint">
-#scroller {
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    position: absolute;
-    top: 48px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-}
-</xmp>
-</div>
 
 <div class="slide">
     <h1>Slow</h1>
