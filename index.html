@@ -138,10 +138,12 @@
 
 <div class="slide">
     <h1>Difference PhoneGap and Cordova?</h1>
-    <p>2011: PhoneGap donated to Apache Software Foundation as Apache Cordova</p>
-    <p>Apache Cordova is free and open source</p>
-	<p>PhoneGap is an open source distribution (by Adobe) of Cordova
-	<br />(similar as to WebKit's relationship to Safari or Chrome)</p>
+    <ul class="paddingleft">
+		<li>2011: PhoneGap donated to Apache Software Foundation as Apache Cordova</li>
+		<li>Apache Cordova is free and open source</li>
+		<li>PhoneGap is an open source distribution (by Adobe) of Cordova
+		<br />(similar as to WebKit's relationship to Safari or Chrome)</li>
+    </ul>
 </div>
 
 
@@ -224,20 +226,27 @@
 </div>
 
 <div class="slide">
-    <h1>Package web apps as mobile apps?</h1>
+    <h1>Old School: Web Apps as Mobile Apps</h1>
     <img src="images/sitemap.gif" class="full" />
 </div>
 
 <div class="slide">
 <h1>New School: Single Page Application (SPA)</h1>
-<xmp class="prettyprint large"><html>
+<xmp class="prettyprint"><html>
 <head>
     <title>My App</title>
     <script src="app.js"></script>
 </head>
 <body></body>
 </html>
+
+
 </xmp>
+    <ul class="paddingleft">
+		<li>Create UI in JavaScript</li>
+		<li>Add/remove from DOM as needed</li>
+    </ul>
+    
 </div>
 
 <div class="slide">
@@ -355,6 +364,25 @@
 </div>
 
 <div class="slide">
+	<h1>Let's Code! <br>Create Cordova Project</h1>
+<xmp class="prettyprint small">
+create cordova project workshop:
+	cordova create workshop com.yourname.workshop Workshop
+	
+	cd workshop
+
+add ios platform:
+	cordova platforms add ios
+	
+add basic plugins:
+	cordova plugin add org.apache.cordova.device
+	cordova plugin add org.apache.cordova.console
+
+	examine file structure
+</xmp>
+</div>
+
+<div class="slide">
     <h1>Hybrid App Development <br>Considerations</h1>
     <ul class="paddingleft small">
         <li>Abstract data access</li>
@@ -371,24 +399,38 @@
 </div>
 
 <div class="slide">
+    <h1>Abstract Data Access - Device Notifications</h1>
+    <img width="800" src="images/notifications.png"/>
+</div>
+
+<div class="slide">
+    <h1>Abstract Data Access - Data Storage</h1>
+    <img width="800" src="images/data-adapters.png"/>
+</div>
+
+<div class="slide">
 	<h1>Let's Code! <br>App Development Example</h1>
 	<p>Employees Database Directory</p>
     <ol class="paddingleft">
-        <li>download files from ....</li>
-		<li>install locally in cordova file structure</li>
-		<li>run/test app</li>
+        <li>download files from <strong>http://bit.ly/LeB4BJ</strong></li>
+		<li>install locally in cordova file structure of workshop (do <strong>NOT</strong> overwite config.xml file!)</li>
+		<li>run/test app (cordova run ios OF cordova emulate ios)</li>
     </ol>
 </div>
 
 <div class="slide">
 	<h1>Let's Code! <br>Choose Local Storage</h1>
-	<p class="paddingleft">Explore different persistence mechanisms:<br><br></p>
+	<p class="paddingleft"><strong>Explore different persistence mechanisms:</strong><br><br></p>
     <ol class="paddingleft">
         <li>MemoryAdapter (default)</li>
 		<li>JSONPAdapter</li>
 		<li>LocalStorageAdapter</li>
 		<li>WebSqlAdapter</li>
     </ol>
+<xmp class="prettyprint small">
+Tip: look in workshop/js/adapters directory and 
+change index.html and js/app.js files to reflect new storage
+</xmp>
 </div>
 
 <div class="slide">
@@ -527,6 +569,33 @@ HTML template solutions: e.g. Mustache.js, Handlebars.js, and Underscore.js.
 </div>
 
 <div class="slide">
+	<h1>Use Templates - example</h1>
+<xmp class="prettyprint xsmall">
+	<ul>
+		{{users}}
+			<li id="{{id}}">{{name}}</li>
+		{{/users}}
+	</ul>
+
+EN
+
+	var users = [
+			{id:1, name="John Doe"},
+			{id:2, name="Jane Doe"},
+			{id:3, name="Joe Smith"},
+		];
+    
+GEEFT:
+    
+	<ul>
+			<li id="1">John Doe</li>
+			<li id="1">Jane Doe</li>
+			<li id="3">Joe Smith</li>
+	</ul>
+</xmp>
+</div>
+
+<div class="slide">
 	<h1>Let's Code! <br>Use Templates</h1>
 <xmp class="prettyprint large">
 Instructies op:
@@ -536,7 +605,7 @@ Instructies op:
 </div>
 
 <div class="slide">
-	<h1>Creating a View Class</h1>
+	<h1>Structure: Create View Class</h1>
 <xmp class="prettyprint">
 It’s time to provide the application with some structure. 
 If we keep adding all the core functions of the application to the 
@@ -672,7 +741,7 @@ within the widget tag:
 </div>
 
 <div class="slide">
-<h1>Slow</h1>
+<h1>Slow (CPU)</h1>
 <xmp class="prettyprint small">
 .page {
     position: absolute;top: 0;left: 0;width: 100%;height: 100%;
@@ -694,7 +763,7 @@ within the widget tag:
 
 
 <div class="slide">
-    <h1>Fast (Hardware Acceleration)</h1>
+    <h1>Fast (Hardware Acceleration - GPU)</h1>
 <pre class="prettyprint small">
 .page {
     position: absolute;top: 0;left: 0;width: 100%;height: 100%;
@@ -741,28 +810,29 @@ modify app.js as follows:
 </div>
 
 <div class="slide">
-<h1>Slow</h1>
-<img src="images/geometrixx.jpg" height="500"/><br/>
+	<h1>Handle Touch Correctly</h1>
 <xmp class="prettyprint">
-<a href="product.php?id=101">Tuareg Summer</a>
+body {
+    /* prevent callout to copy image, etc when tap to hold */
+    -webkit-touch-callout: none;            
+
+    /* prevent webkit from resizing text to fit */
+    -webkit-text-size-adjust: none;             
+
+    /* prevent copy paste, to allow, change 'none' to 'text' */
+    -webkit-user-select: none;                  
+}
 </xmp>
 </div>
 
 <div class="slide">
-    <h1>Slow</h1>
+    <h1>Slow: UI Generation on Server</h1>
 <pre class="prettyprint">
 $.get("product.php?id=101").done(function(page) {
     $("body").html(page);
 });
 </pre>
-    <h2>[jQuery Mobile Hijax]</h2>
 </div>
-
-<div class="slide green">
-    <div class="count">#10</div>
-    <h1>Don't generate the UI on the server</h1>
-</div>
-
 
 <div class="slide">
     <h1>Fast</h1>
@@ -771,23 +841,6 @@ $.get("product.php?id=101").done(function(page) {
         <li>Insert/remove views into/from the DOM as needed</li>
     </ul>
 </div>
-
-<!--
-<div class="slide">
-<h1>Single Page Application</h1>
-<xmp class="prettyprint large">
-    <html>
-    <head>
-        <title>My App</title>
-    </head>
-    <body>
-        <div></div>
-        <script src="app.js"></script>
-    </body>
-    </html>
-</xmp>
-</div>
--->
 
 <div class="slide">
     <h1>Slow</h1>
@@ -842,11 +895,7 @@ dataAdapter.getItems().done(function(data) {
 </div>
 
 <div class="slide">
-    <h1>Limit Result Set Width</h1>
-</div>
-
-<div class="slide">
-    <h1>Slow</h1>
+    <h1>Slow Perceipt Data Access</h1>
 <pre class="prettyprint">
 // Get data
 $.ajax({url: "product/101"}).done(function(product) {
@@ -857,13 +906,10 @@ $.ajax({url: "product/101"}).done(function(product) {
 </div>
 
 <div class="slide">
-    <div class="count">#8</div>
-    <h1>Don't wait for the data to display the UI</h1>
-</div>
-
-<div class="slide">
-    <h1>Fast</h1>
+    <h1>Fast Perceipt Data Access</h1>
 <pre class="prettyprint">
+Don't wait for the data to display the UI
+	
 // Display view
 displayView();
 
@@ -889,74 +935,44 @@ $("#page").animate();
 -->
 
 <div class="slide">
-    <h1>Slow</h1>
-<pre class="prettyprint">
-&lt;li>&lt;img src="img/icon_home.png"/>Call Home&lt;/li>
-&lt;li>&lt;img src="img/icon_office.png"/>Call Office&lt;/li>
-&lt;li>&lt;img src="img/icon_cell.png"/>Call Cell&lt;/li>
-&lt;li>&lt;img src="img/icon_email.png"/>Email&lt;/li>
-&lt;li>&lt;img src="img/icon_sms.png"/>Text&lt;/li>
-&lt;li>&lt;img src="img/icon_map.png"/>Map&lt;/li>
-&lt;li>&lt;img src="img/icon_contact.png"/>Add Contact&lt;/li>
-</pre>
-</div>
-
-
-<div class="slide">
-    <div class="count">#5</div>
-    <h1>Optimize Images</h1>
-</div>
-
-<div class="slide">
-    <h1>Use CSS Sprite Sheets</h1>
-    <img src="images/glyphicons-halflings.png"/>
-    <h2>glyphicons-halflings.png</h2>
-</div>
-
-<div class="slide">
-    <h1>Use CSS Sprite Sheets</h1>
-<pre class="prettyprint">
-.icon {
-  width: 14px; height: 14px;
-  background-image: url("glyphicons-halflings.png");
-}
-.icon-glass {
-  background-position: 0 0;
-}
-.icon-music {
-  background-position: -24px 0;
-}
-.icon-search {
-  background-position: -48px 0;
-}
-</pre>
-</div>
-
-<div class="slide">
-    <h1>Demo</h1>
-    <p><img src="images/spritesheet.jpg" style="padding:16px;background-color:white;"></p>
-</div>
-
-<div class="slide">
-    <h1>Optimizing Images</h1>
-    <ul class="paddingleft">
-        <li>Use the right image size (don't scale images in HTML)</li>
-        <li>Host images on scalable, distributed systems (i.e. S3)</li>
-        <li>Avoid 404s for images</li>
-<xmp class="prettyprint" style="text-decoration: line-through">
-<img src="{{pic}}" onerror='this.src="nopic.jpg"'/>
+    <h1>Slow: Load Multiple Images</h1>
+<xmp class="prettyprint small">
+	<li><img src="img/icon_home.png"/>Call Home</li>
+	<li><img src="img/icon_office.png"/>Call Office</li>
+	<li><img src="img/icon_email.png"/>Email</li>
 </xmp>
-    </ul>
 </div>
 
-
+<div class="slide">
+    <h1>Fast: Use CSS Sprite Sheets</h1>
+    <img src="images/glyphicons-halflings.png"/>
+</div>
 
 <div class="slide">
-    <div class="count">#4</div>
+    <h1>Fast: Use CSS Sprite Sheets</h1>
+<xmp class="prettyprint small">
+	<li><img src="#" class="icon icon-home" />Call Home</li>
+	<li><img src="#" class="icon icon-office" />Call Office</li>
+	<li><img src="#" class="icon icon-email" />Email</li>
+	
+	.icon {
+	  width: 14px; height: 14px;
+	  background-image: url("imagesprite.png");
+	}
+	.icon-home {
+	  background-position: 0 0;
+	}
+	.icon-office {
+	  background-position: -24px 0;
+	}
+	.icon-email {
+	  background-position: -48px 0;
+	}
+</xmp>
+</div>
+
+<div class="slide">
     <h1>Limit Shadows and Gradients</h1>
-</div>
-
-<div class="slide">
     <ul class="paddingleft">
         <li>box-shadow</li>
         <li>border-radius</li>
@@ -1013,12 +1029,6 @@ $backButton.attr("href", "#");
         <li>Don't use a full-stack framework just because you like a small piece of it (i.e. transitions our UI components)</li>
         <li>Understand the performance characteristics of libraries you use</li>
     </ul>
-</div>
-
-<div class="slide">
-    <div class="count">#1</div>
-    <h1>TEST!</h1>
-    <h1>[Know the Problem]</h1>
 </div>
 
 <div class="slide">
