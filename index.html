@@ -3,24 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>iOS App</title>
+    <title>App Dev for iOS</title>
     <link href="topcoat/css/topcoat-mobile-light.css" rel="stylesheet" type="text/css">
     <link href="css/keypoint.css" rel="stylesheet" type="text/css">
     <link href="css/prettify.css" rel="stylesheet" type="text/css">
     <link href="css/slides.css" rel="stylesheet" type="text/css">
-    <!-- 
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-721308-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    -->
 </head>
 
 <body>
@@ -412,7 +399,7 @@ add basic plugins:
 	<h1>Let's Code! <br>App Development Example</h1>
 	<p>Employees Database Directory</p>
     <ol class="paddingleft">
-        <li>download files from <strong>http://bit.ly/LeB4BJ</strong></li>
+        <li>download files from <strong>http://bit.ly/1fhSI2A</strong></li>
 		<li>install locally in cordova file structure of workshop (do <strong>NOT</strong> overwite config.xml file!)</li>
 		<li>run/test app (cordova run ios OF cordova emulate ios)</li>
     </ol>
@@ -684,25 +671,48 @@ within the widget tag:
 
 <div class="slide">
 	<h1>Implement Routing</h1>
-<xmp class="prettyprint xsmall">
+<xmp class="prettyprint small">
+add an employee details view =>	application now has more than one view
+
+add simple view routing mechanism that uses the hash tag to determine 
+whether to display home view or employee details view
 </xmp>
 </div>
 
 <div class="slide">
 	<h1>Let's Code! <br>Use Routing</h1>
 <xmp class="prettyprint xsmall">
+	Step 1: Create Employee Template
+	
+		instructions at: http://bit.ly/1aY0P2E
+		
+	Step 2: Create EmployeeView Class
+	
+		instructions at: http://bit.ly/1aY1n8W
+		
+	Step 3: Implement View Routing
+
+		instructions at: http://bit.ly/LfCOKZ
 </xmp>
 </div>
 
 <div class="slide">
 	<h1>Using Device APIs</h1>
-<xmp class="prettyprint xsmall">
+<xmp class="prettyprint small">
+unzip and install Cordova Device APIs demo app for iPad from:
+	
+	http://bit.ly/M5DZNa
+	
+more info at: 
+	
+	http://cordova.apache.org/docs/en/3.1.0/index.html
 </xmp>
 </div>
 
 <div class="slide">
 	<h1>Let's Code! <br>Using Device APIs</h1>
 <xmp class="prettyprint xsmall">
+
 </xmp>
 </div>
 
@@ -794,8 +804,6 @@ modify index.html as follows:
 
 	2. add a script tag to include the pageslider.js library:
 		<script src="lib/pageslider.js"></script>
-		
-		PageSlider is a micro library on GitHub: https://github.com/ccoenraets/PageSlider
 
 modify app.js as follows:
 
