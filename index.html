@@ -126,7 +126,7 @@
 
 <div class="slide">
     <h1>Difference PhoneGap and Cordova?</h1>
-    <ul class="paddingleft">
+    <ul class="paddingleft small">
 		<li>2011: PhoneGap donated to Apache Software Foundation as Apache Cordova</li>
 		<li>Apache Cordova is free and open source</li>
 		<li>PhoneGap is an open source distribution (by Adobe) of Cordova
@@ -207,7 +207,7 @@
 
 <div class="slide">
     <h1>Let's code!</h1>
-    <ul class="paddingleft">
+    <ul class="paddingleft small">
 		<li>Installeer de locale ontwikkelomgeving met NodeJS, Xcode, en Cordova</li>
 		<li>Installeer de remote ontwikkelomgeving met GitHub en PhoneGap Build</li>
     </ul>
@@ -401,7 +401,7 @@ add basic plugins:
 	<p>Employees Database Directory</p>
     <ol class="paddingleft">
         <li>download files from <strong>http://bit.ly/1fhSI2A</strong></li>
-		<li>install locally in cordova file structure of workshop (do <strong>NOT</strong> overwite config.xml file!)</li>
+		<li>install locally in cordova file structure of workshop<br>(do <strong>NOT</strong> overwite config.xml file!)</li>
 		<li>run/test app (cordova run ios OF cordova emulate ios)</li>
     </ol>
 </div>
@@ -830,7 +830,7 @@ modify index.html as follows:
 
 modify app.js as follows:
 
-1. in the Local Variables section, declare an instance of the PageSlider object as follows:
+1. in Local Variables section, declare an instance of PageSlider object as follows:
 	var slider = new PageSlider($('body'));
 2. in the route() function, replace the calls to $(‘body’).html() with calls to 
    slider.slidePage() passing the same argument to the function.
@@ -843,16 +843,16 @@ and
 <div class="slide">
 	<h1>Handle Touch Correctly</h1>
 <xmp class="prettyprint small">
-	body {
-		/* prevent callout to copy image, etc when tap to hold */
-		-webkit-touch-callout: none;            
+body {
+	/* prevent callout to copy image, etc when tap to hold */
+	-webkit-touch-callout: none;            
 
-		/* prevent webkit from resizing text to fit */
-		-webkit-text-size-adjust: none;             
+	/* prevent webkit from resizing text to fit */
+	-webkit-text-size-adjust: none;             
 
-		/* prevent copy paste, to allow, change 'none' to 'text' */
-		-webkit-user-select: none;                  
-	}
+	/* prevent copy paste, to allow, change 'none' to 'text' */
+	-webkit-user-select: none;                  
+}
 </xmp>
 </div>
 
@@ -968,9 +968,9 @@ $("#page").animate();
 <div class="slide">
     <h1>Slow: Load Multiple Images</h1>
 <xmp class="prettyprint small">
-	<li><img src="img/icon_home.png"/>Call Home</li>
-	<li><img src="img/icon_office.png"/>Call Office</li>
-	<li><img src="img/icon_email.png"/>Email</li>
+<li><img src="img/icon_home.png"/>Call Home</li>
+<li><img src="img/icon_office.png"/>Call Office</li>
+<li><img src="img/icon_email.png"/>Email</li>
 </xmp>
 </div>
 
@@ -982,23 +982,23 @@ $("#page").animate();
 <div class="slide">
     <h1>Fast: Use CSS Sprite Sheets</h1>
 <xmp class="prettyprint small">
-	<li><img src="#" class="icon icon-home" />Call Home</li>
-	<li><img src="#" class="icon icon-office" />Call Office</li>
-	<li><img src="#" class="icon icon-email" />Email</li>
-	
-	.icon {
-	  width: 14px; height: 14px;
-	  background-image: url("imagesprite.png");
-	}
-	.icon-home {
-	  background-position: 0 0;
-	}
-	.icon-office {
-	  background-position: -24px 0;
-	}
-	.icon-email {
-	  background-position: -48px 0;
-	}
+<li><img src="#" class="icon icon-home" />Call Home</li>
+<li><img src="#" class="icon icon-office" />Call Office</li>
+<li><img src="#" class="icon icon-email" />Email</li>
+
+.icon {
+  width: 14px; height: 14px;
+  background-image: url("imagesprite.png");
+}
+.icon-home {
+  background-position: 0 0;
+}
+.icon-office {
+  background-position: -24px 0;
+}
+.icon-email {
+  background-position: -48px 0;
+}
 </xmp>
 </div>
 
@@ -1056,9 +1056,9 @@ $backButton.attr("href", "#");
 
 <div class="slide">
     <h1>Framework Considerations</h1>
-    <ul style="padding: 0 60px;" class="paddingleft">
-        <li>Don't use a full-stack framework just because you like a small piece of it (i.e. transitions our UI components)</li>
-        <li>Understand the performance characteristics of libraries you use</li>
+    <ul class="paddingleft">
+        <li>Don't use a full-stack framework just because you like a <br>small piece of it (i.e. transitions our UI components)</li>
+        <li>Understand the performance characteristics of libraries <br>you use</li>
     </ul>
 </div>
 
@@ -1087,7 +1087,7 @@ $backButton.attr("href", "#");
 
 <div class="slide">
     <h1>Enable Safari Web Inspector (iOS)</h1>
-    <p>Open Settings app > Tap Safari > Scroll down & select Advanced.</p>
+    <p>Open Settings app > Tap Safari > Scroll down & select Advanced</p>
     <img width="350" src="images/enable-web-inspector-ios.png"/>
 </div>
 
@@ -1103,7 +1103,7 @@ $backButton.attr("href", "#");
 
 <div class="slide">
     <h1>console.log Debugging</h1>
-	<p>iOS: all console.log('...'); are output to the Xcode Debug Area console</p>
+	<p class="small">iOS: all console.log('...'); are output to the Xcode Debug Area console</p>
 </div>
 
 <div class="slide">
@@ -1120,7 +1120,7 @@ $backButton.attr("href", "#");
 </div>
 
 <div class="slide">
-    <h1>Provisioning Your Devices for Development</h1>
+    <h1>Provisioning Your Devices <br>for Development</h1>
     <ol class="paddingleft">
         <li>Request a Development Certificate</li>
         <li>Provision Your Device</li>
@@ -1165,7 +1165,7 @@ $backButton.attr("href", "#");
 </div>
 
 <div class="slide">
-    <h1>Create Store Distribution Provisioning Profile<br>(in developer.apple.com)</h1>
+    <h1>Create Store Distribution <br>Provisioning Profile <br>(in developer.apple.com)</h1>
     <img width="800" src="images/createdistributionprofile.png"/>
 </div>
 
@@ -1175,7 +1175,7 @@ $backButton.attr("href", "#");
 </div>
 
 <div class="slide">
-    <h1>Submit Your App<br>Xcode (see below) or Application Loader</h1>
+    <h1>Submit Your App<br>Xcode (see below) / Application Loader</h1>
     <img width="800" src="images/createappstorepkg.png"/>
 </div>
 
