@@ -120,7 +120,7 @@
 </div>
 
 <div class="slide">
-    <h1>PhoneGap = "headless" web browser + API</h1>
+    <h1>PhoneGap = "Headless" Browser + API</h1>
     <img src="images/web-view.png"/><br/>
 </div>
 
@@ -214,12 +214,12 @@
 </div>
 
 <div class="slide">
-    <h1>Old School: Web Apps as Mobile Apps</h1>
+    <h1>Old: Web Apps as Mobile Apps</h1>
     <img src="images/sitemap.gif" class="full" />
 </div>
 
 <div class="slide">
-	<h1>New School: Single Page Application (SPA)</h1>
+	<h1>New: Single Page Application (SPA)</h1>
 <xmp class="prettyprint"><html>
 <head>
     <title>My App</title>
@@ -387,12 +387,12 @@ add basic plugins:
 </div>
 
 <div class="slide">
-    <h1>Abstract Data Access - Device Notifications</h1>
+    <h1>Abstract Access - Device Notifications</h1>
     <img width="800" src="images/notifications.png"/>
 </div>
 
 <div class="slide">
-    <h1>Abstract Data Access - Data Storage</h1>
+    <h1>Abstract Access - Data Storage</h1>
     <img width="800" src="images/data-adapters.png"/>
 </div>
 
@@ -402,7 +402,7 @@ add basic plugins:
     <ol class="paddingleft">
         <li>download files from <strong>http://bit.ly/1fhSI2A</strong></li>
 		<li>install locally in cordova file structure of workshop<br>(do <strong>NOT</strong> overwite config.xml file!)</li>
-		<li>run/test app (cordova run ios OF cordova emulate ios)</li>
+		<li>run/test app (<strong>cordova run ios</strong> OF <strong>cordova emulate ios</strong>)</li>
     </ol>
 </div>
 
@@ -423,29 +423,29 @@ change index.html and js/app.js files to reflect new storage
 
 <div class="slide">
 	<h1>Let's Code! <br>Add Native Notification</h1>
-<xmp class="prettyprint xsmall">
-	
+<xmp class="prettyprint">
 zie ook op: http://bit.ly/1foeXlq
-	
-	1. add native dialog to app: cordova plugin add org.apache.cordova.dialogs
-	
-	2. add <script src="cordova.js"></script> to bottom of index.html
+</xmp>
+<xmp class="prettyprint xsmall">
+1. add native dialog to app: cordova plugin add org.apache.cordova.dialogs
 
-	3. add following code to "Event Registration" block: 
-		document.addEventListener('deviceready', function () {
-			if (navigator.notification) { // Override default HTML alert
-				window.alert = function (message) {
-					navigator.notification.alert(
-						message,    // message
-						null,       // callback
-						"Workshop", // title
-						'OK'        // buttonName
-					);
-				};
-			}
-		}, false);
+2. add <script src="cordova.js"></script> to bottom of index.html
 
-	4. test/run application
+3. add following code to "Event Registration" block: 
+	document.addEventListener('deviceready', function () {
+		if (navigator.notification) { // Override default HTML alert
+			window.alert = function (message) {
+				navigator.notification.alert(
+					message,    // message
+					null,       // callback
+					"Workshop", // title
+					'OK'        // buttonName
+				);
+			};
+		}
+	}, false);
+
+4. test/run application
 </xmp>
 </div>
 
@@ -480,43 +480,45 @@ zie ook op: http://bit.ly/1foeXlq
 
 <div class="slide">
 	<h1>Let's Code! <br>Avoid Click Delay</h1>
-<xmp class="prettyprint xsmall">
-	1. continu to use Employees Database Directory example
-	
-	2. test the application on your iOS device or in the iOS emulator
-	   tap the Help button and notice the delay
+<xmp class="prettyprint small">
+1. continu to use Employees Database Directory example
 
-	3. add the following script tag: <script src="lib/fastclick.js"></script>
-	
-	4. in app.js, register FastClick inside the deviceready event handler:
-	   FastClick.attach(document.body);
+2. test the application on your iOS device or in the iOS emulator
+   tap the Help button and notice the delay
 
-	5. test/run application
+3. add the following script tag:
+	<script src="lib/fastclick.js"></script>
+
+4. in app.js, register FastClick inside deviceready event handler:
+	FastClick.attach(document.body);
+
+5. test/run application
 </xmp>
 </div>
 
 <div class="slide">
-	<h1>Use Single-Page Application</h1>
-<xmp class="prettyprint xsmall">
-Single-Page Application (SPA) = web application that lives within a single HTML page
+	<h1>Use Single-Page Application (SPA)</h1>
+<xmp class="prettyprint small">
+SPA = web application that lives within a single HTML page
 
-Application views are injected into and removed from the DOM as needed 
+Application views are injected into and removed from DOM as needed 
 
 Advantages are:
 
-    1. Absence of page refreshes provides more fluid and closer to 
+    1. Absence of page refreshes => more fluid and closer to 
        native experience
 
-    2. UI is entirely created at client-side: ideal architecture for 
-       applications that work offline.
+    2. UI is entirely created at client-side: ideal architecture 
+       for applications that work offline.
 </xmp>
 </div>
 
 <div class="slide">
 	<h1>Let's Code! Use SPA</h1>
-<xmp class="prettyprint xsmall">
+<xmp class="prettyprint">
 zie ook op: http://bit.ly/1d3VrYr
-
+</xmp>
+<xmp class="prettyprint xsmall">
 1. continu to use Employees Database Directory example
 2. in index.html: remove the HTML markup inside the body tag 
    (with the exception of the script tags).
@@ -544,22 +546,24 @@ zie ook op: http://bit.ly/1d3VrYr
 
 <div class="slide">
 	<h1>Use Templates</h1>
-<xmp class="prettyprint xsmall">
-Writing HTML fragments in JavaScript and programmatically inserting 
-them into the DOM results in:
+<xmp class="prettyprint small">
+Writing HTML fragments in JavaScript and programmatically 
+inserting them into the DOM results in:
 
 	1. harder to write code
 	2. harder to maintain code
 	
-HTML templates address this by decoupling UI (HTML markup) from code.
+HTML templates address this by decoupling UI (HTML markup) 
+from code.
  
-HTML template solutions: e.g. Mustache.js, Handlebars.js, and Underscore.js.
+HTML template solutions: 
+	e.g. Mustache.js, Handlebars.js, and Underscore.js.
 </xmp>
 </div>
 
 <div class="slide">
 	<h1>Use Templates - example</h1>
-<xmp class="prettyprint xsmall">
+<xmp class="prettyprint small">
 	<ul>
 		{{users}}
 			<li id="{{id}}">{{name}}</li>
@@ -569,17 +573,17 @@ HTML template solutions: e.g. Mustache.js, Handlebars.js, and Underscore.js.
 EN
 
 	var users = [
-			{id:1, name="John Doe"},
-			{id:2, name="Jane Doe"},
-			{id:3, name="Joe Smith"},
-		];
+		{id:1, name="John Doe"},
+		{id:2, name="Jane Doe"},
+		{id:3, name="Joe Smith"},
+	];
     
 GEEFT:
     
 	<ul>
-			<li id="1">John Doe</li>
-			<li id="1">Jane Doe</li>
-			<li id="3">Joe Smith</li>
+		<li id="1">John Doe</li>
+		<li id="2">Jane Doe</li>
+		<li id="3">Joe Smith</li>
 	</ul>
 </xmp>
 </div>
@@ -595,7 +599,7 @@ Instructies op:
 
 <div class="slide">
 	<h1>Structure: Create View Class</h1>
-<xmp class="prettyprint small">
+<xmp class="prettyprint xsmall">
 It’s time to provide the application with some structure. 
 If we keep adding all the core functions of the application to the 
 immediate function that bootstraps the app, it will very quickly grow 
@@ -622,7 +626,7 @@ Step 2: Using the Home View
 
 <div class="slide">
 <h1>Use Native Scrolling</h1>
-<xmp class="prettyprint xsmall">
+<xmp class="prettyprint small">
 	#scroller {
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
@@ -632,7 +636,8 @@ Step 2: Using the Home View
 		left: 0px;
 		right: 0px;
 	}
-	
+</xmp>
+<xmp class="prettyprint xsmall">
 	Test the application. Specifically, test the list behavior 
 	when the list is bigger than the browser window (or the screen). 
 	Notice that the entire view (including the header) is scrolling.
@@ -648,6 +653,7 @@ Step 2: Using the Home View
 	<h1>Let's Code! Native Scrolling</h1>
 <xmp class="prettyprint xsmall">
 To anchor the header at the top of the screen, and scroll the employee list only:
+
 1. in Home template, add css class scroller to div surrounding employee list ul:
 	<div class="topcoat-list__container scroller">
 		<ul class="topcoat-list list employee-list"></ul>
@@ -664,9 +670,9 @@ To anchor the header at the top of the screen, and scroll the employee list only
 	}
 3. test the application
 
-On iOS, you can still scroll down the web view (including the header). To disable this, 
-open config.xml in workshop/www folder and add following preference as last line 
-within the widget tag:
+On iOS, you can still scroll down the web view (including the header). To disable 
+this, open config.xml in workshop/www folder and add following preference as 
+last line within the widget tag:
 	<preference name="DisallowOverscroll" value="true" />
 </xmp>
 </div>
@@ -674,40 +680,41 @@ within the widget tag:
 <div class="slide">
 	<h1>Implement Routing</h1>
 <xmp class="prettyprint small">
-add an employee details view =>	application now has more than one view
+add employee details view => application now has more than one view
 
-add simple view routing mechanism that uses the hash tag to determine 
-whether to display home view or employee details view
+add simple view routing mechanism that uses the hash tag 
+to determine whether to display home view or employee 
+details view
 </xmp>
 </div>
 
 <div class="slide">
-	<h1>Let's Code! <br>Use Routing</h1>
-<xmp class="prettyprint xsmall">
-	Step 1: Create Employee Template
-	
-		instructions at: http://bit.ly/1aY0P2E
-		
-	Step 2: Create EmployeeView Class
-	
-		instructions at: http://bit.ly/1k04JLd
-		
-	Step 3: Implement View Routing
+	<h1>Let's Code! Use Routing</h1>
+<xmp class="prettyprint">
+Step 1: Create Employee Template
 
-		instructions at: http://bit.ly/LfCOKZ
+	instructions at: http://bit.ly/1aY0P2E
+	
+Step 2: Create EmployeeView Class
+
+	instructions at: http://bit.ly/1k04JLd
+	
+Step 3: Implement View Routing
+
+	instructions at: http://bit.ly/LfCOKZ
 </xmp>
 </div>
 
 <div class="slide">
 	<h1>Using Device APIs</h1>
-<xmp class="prettyprint small">
-unzip and install Cordova Device APIs demo app for iPad from:
+<xmp class="prettyprint">
+unzip & install Cordova Device APIs Demo iPad App:
 	
-	http://bit.ly/M5DZNa
+  http://bit.ly/M5DZNa
 	
 more info at: 
 	
-	http://cordova.apache.org/docs/en/3.1.0/index.html
+  http://cordova.apache.org/docs/en/3.1.0/index.html
 </xmp>
 </div>
 
@@ -715,27 +722,29 @@ more info at:
 	<h1>Let's Code! Using Device APIs</h1>
 <xmp class="prettyprint xsmall">
 Using the Location API:
-
-Add the ability to tag an employee with his/her location information. 
-We display the raw information (longitude/latitude) in an alert. In a real-life application, 
-we would typically save the location in the database as part of the employee information 
-and show it on a map.
-
-	instructions at: http://bit.ly/1eupB8v
-	
+Add the ability to tag an employee with his/her location information. We display the 
+raw information (longitude/latitude) in an alert. In a real-life application, we 
+would typically save the location in the database as part of the employee 
+information and show it on a map.
+</xmp>
+<xmp class="prettyprint">
+instructions at: http://bit.ly/1eupB8v
+</xmp>
+<xmp class="prettyprint xsmall">	
 Using the Contacts API:
-
 Use the Cordova Contacts API to provide the user with the ability to add an employee 
-to the device's contact list.
-
-	instructions at: http://bit.ly/1e40zlF
-	
+to the device’s contact list.
+</xmp>
+<xmp class="prettyprint">
+instructions at: http://bit.ly/1e40zlF
+</xmp>
+<xmp class="prettyprint xsmall">
 Using the Camera API:
-
 Use the Cordova Camera API to provide the user with the ability to take a picture of 
-an employee, and use that picture as the employee's picture in the application.
-
-	instructions at: http://bit.ly/1eddDDy
+an employee, and use that picture as the employee’s picture in the application.
+</xmp>
+<xmp class="prettyprint">
+instructions at: http://bit.ly/1eddDDy
 </xmp>
 </div>
 
@@ -818,10 +827,9 @@ an employee, and use that picture as the employee's picture in the application.
 </div>
 
 <div class="slide">
-	<h1>Let's Code! <br>Sliding Pages with CSS Transitions</h1>
-<xmp class="prettyprint xsmall">
+	<h1>Let's Code! Sliding Pages</h1>
+<xmp class="prettyprint small">
 modify index.html as follows:
-
 1. add pageslider.css inside the head tag in index.html:
 	<link href="assets/css/pageslider.css" rel="stylesheet">
 
@@ -829,14 +837,16 @@ modify index.html as follows:
 	<script src="lib/pageslider.js"></script>
 
 modify app.js as follows:
-
-1. in Local Variables section, declare an instance of PageSlider object as follows:
+1. in Local Variables section, declare PageSlider object instance:
 	var slider = new PageSlider($('body'));
-2. in the route() function, replace the calls to $(‘body’).html() with calls to 
-   slider.slidePage() passing the same argument to the function.
-	slider.slidePage(new HomeView(adapter, homeTpl, employeeLiTpl).render().el);
+2. in route() function replace calls to $(‘body’).html() with calls 
+   to slider.slidePage() passing same argument to the function:
+   
+slider.slidePage(new HomeView(
+		adapter, homeTpl, employeeLiTpl).render().el);
 and
-	slider.slidePage(new EmployeeView(adapter, employeeTpl, employee).render().el);
+slider.slidePage(new EmployeeView(
+		adapter, employeeTpl, employee).render().el);
 </xmp>
 </div>
 
@@ -939,7 +949,7 @@ $.ajax({url: "product/101"}).done(function(product) {
 <div class="slide">
     <h1>Fast Perceipt Data Access</h1>
 <pre class="prettyprint">
-Don't wait for the data to display the UI
+Don’t wait for the data to display the UI
 	
 // Display view
 displayView();
