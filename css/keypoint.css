@@ -162,7 +162,8 @@ td {
 }
 
 .paddingleft {
-	width: 800px;
+	/* width: 800px; */
+	width: 50%;
 	margin: auto;
 	padding: auto;
 }

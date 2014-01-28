@@ -49,7 +49,8 @@
         <li>Mobile App Ontwikkeling: overzicht</li>
         <li>Wat is PhoneGap / Apache Cordova?</li>
         <li>Opzetten van ontwikkelomgeving met PhoneGap</li>
-        <li>Ontwikkeling van Simple App</li>
+        <li>Ontwikkelen en testen van een App</li>
+		<li>Plaatsen van een App op de Apple App Store</li>
     </ul>
 </div>
 
@@ -218,7 +219,7 @@
 </div>
 
 <div class="slide">
-<h1>New School: Single Page Application (SPA)</h1>
+	<h1>New School: Single Page Application (SPA)</h1>
 <xmp class="prettyprint"><html>
 <head>
     <title>My App</title>
@@ -340,7 +341,7 @@
 <div class="slide">
     <h1>Evaluating Frameworks</h1>
     <div class="paddingleft">
-    <table style="width: 900px;">
+    <table>
         <tr><td></td><td>Scope</td><td>Declarative</td><td>Prescriptive</td><td>Ready</td></tr>
         <tr><td>jQuery Mobile</td><td><img src="images/veryhigh.png"/></td><td><img src="images/veryhigh.png"/></td><td><img src="images/veryhigh.png"/></td><td><img src="images/veryhigh.png"/></td></tr>
         <tr><td>Backbone.js</td><td><img src="images/verylow.png"/></td><td><img src="images/verylow.png"/></td><td><img src="images/verylow.png"/></td><td><img src="images/veryhigh.png"/></td></tr>
@@ -515,28 +516,29 @@ Advantages are:
 	<h1>Let's Code! Use SPA</h1>
 <xmp class="prettyprint xsmall">
 zie ook op: http://bit.ly/1d3VrYr
-	1. continu to use Employees Database Directory example
-	2. in index.html: remove the HTML markup inside the body tag 
-	   (with the exception of the script tags).
-	3. inside the immediate function in app.js, define a function named renderHomeView() 
-	   (right after the findByName function): 
-	   function renderHomeView() {
-		  var html =
-			 "<h1>Directory</h1>" +
-			 "<input class='search-key' type='search' placeholder='Enter name'/>" +
-			 "<ul class='employee-list'></ul>";
-		  $('body').html(html);
-		  $('.search-key').on('keyup', findByName);
-	   }
-	4. modify the data adapter initialization logic: when the adapter has been initialized, 
-	   call the renderHomeView() function to programmatically display the Home View:	
-		var adapter = new MemoryAdapter();
-		adapter.initialize().done(function () {
-			renderHomeView();
-		});
-	5. make sure you remove the original event registration in the Event Registration section.
-	6. remove the click event handler for the help button (in the Event Registration section).
-	7. test the application.
+
+1. continu to use Employees Database Directory example
+2. in index.html: remove the HTML markup inside the body tag 
+   (with the exception of the script tags).
+3. inside the immediate function in app.js, define a function named renderHomeView() 
+   (right after the findByName function): 
+   function renderHomeView() {
+	  var html =
+		 "<h1>Directory</h1>" +
+		 "<input class='search-key' type='search' placeholder='Enter name'/>" +
+		 "<ul class='employee-list'></ul>";
+	  $('body').html(html);
+	  $('.search-key').on('keyup', findByName);
+   }
+4. modify the data adapter initialization logic: when the adapter has been initialized, 
+   call the renderHomeView() function to programmatically display the Home View:	
+	var adapter = new MemoryAdapter();
+	adapter.initialize().done(function () {
+		renderHomeView();
+	});
+5. make sure you remove the original event registration in the Event Registration section.
+6. remove the click event handler for the help button (in the Event Registration section).
+7. test the application.
 </xmp>
 </div>
 
@@ -593,7 +595,7 @@ Instructies op:
 
 <div class="slide">
 	<h1>Structure: Create View Class</h1>
-<xmp class="prettyprint">
+<xmp class="prettyprint small">
 It’s time to provide the application with some structure. 
 If we keep adding all the core functions of the application to the 
 immediate function that bootstraps the app, it will very quickly grow 
@@ -643,10 +645,10 @@ Step 2: Using the Home View
 </div>
 
 <div class="slide">
-	<h1>Let's Code! <br>Native Scrolling</h1>
+	<h1>Let's Code! Native Scrolling</h1>
 <xmp class="prettyprint xsmall">
 To anchor the header at the top of the screen, and scroll the employee list only:
-1. in Home Page template, add css class scroller to the div surrounding the employee list ul.
+1. in Home template, add css class scroller to div surrounding employee list ul:
 	<div class="topcoat-list__container scroller">
 		<ul class="topcoat-list list employee-list"></ul>
 	</div>
@@ -662,8 +664,8 @@ To anchor the header at the top of the screen, and scroll the employee list only
 	}
 3. test the application
 
-On iOS, you can still scroll down the web view (including the header). To disable this behavior, 
-open config.xml in the workshop/www folder and add the following preference as the last line 
+On iOS, you can still scroll down the web view (including the header). To disable this, 
+open config.xml in workshop/www folder and add following preference as last line 
 within the widget tag:
 	<preference name="DisallowOverscroll" value="true" />
 </xmp>
@@ -710,9 +712,10 @@ more info at:
 </div>
 
 <div class="slide">
-	<h1>Let's Code! <br>Using Device APIs</h1>
+	<h1>Let's Code! Using Device APIs</h1>
 <xmp class="prettyprint xsmall">
 Using the Location API:
+
 Add the ability to tag an employee with his/her location information. 
 We display the raw information (longitude/latitude) in an alert. In a real-life application, 
 we would typically save the location in the database as part of the employee information 
@@ -721,12 +724,14 @@ and show it on a map.
 	instructions at: http://bit.ly/1eupB8v
 	
 Using the Contacts API:
+
 Use the Cordova Contacts API to provide the user with the ability to add an employee 
 to the device's contact list.
 
 	instructions at: http://bit.ly/1e40zlF
 	
 Using the Camera API:
+
 Use the Cordova Camera API to provide the user with the ability to take a picture of 
 an employee, and use that picture as the employee's picture in the application.
 
@@ -817,37 +822,37 @@ an employee, and use that picture as the employee's picture in the application.
 <xmp class="prettyprint xsmall">
 modify index.html as follows:
 
-	1. add pageslider.css inside the head tag in index.html:
-		<link href="assets/css/pageslider.css" rel="stylesheet">
+1. add pageslider.css inside the head tag in index.html:
+	<link href="assets/css/pageslider.css" rel="stylesheet">
 
-	2. add a script tag to include the pageslider.js library:
-		<script src="lib/pageslider.js"></script>
+2. add a script tag to include the pageslider.js library:
+	<script src="lib/pageslider.js"></script>
 
 modify app.js as follows:
 
-	1. in the Local Variables section, declare an instance of the PageSlider object as follows:
-		var slider = new PageSlider($('body'));
-	2. in the route() function, replace the calls to $(‘body’).html() with calls to 
-	   slider.slidePage() passing the same argument to the function.
-		slider.slidePage(new HomeView(adapter, homeTpl, employeeLiTpl).render().el);
-	and
-		slider.slidePage(new EmployeeView(adapter, employeeTpl, employee).render().el);
+1. in the Local Variables section, declare an instance of the PageSlider object as follows:
+	var slider = new PageSlider($('body'));
+2. in the route() function, replace the calls to $(‘body’).html() with calls to 
+   slider.slidePage() passing the same argument to the function.
+	slider.slidePage(new HomeView(adapter, homeTpl, employeeLiTpl).render().el);
+and
+	slider.slidePage(new EmployeeView(adapter, employeeTpl, employee).render().el);
 </xmp>
 </div>
 
 <div class="slide">
 	<h1>Handle Touch Correctly</h1>
-<xmp class="prettyprint">
-body {
-    /* prevent callout to copy image, etc when tap to hold */
-    -webkit-touch-callout: none;            
+<xmp class="prettyprint small">
+	body {
+		/* prevent callout to copy image, etc when tap to hold */
+		-webkit-touch-callout: none;            
 
-    /* prevent webkit from resizing text to fit */
-    -webkit-text-size-adjust: none;             
+		/* prevent webkit from resizing text to fit */
+		-webkit-text-size-adjust: none;             
 
-    /* prevent copy paste, to allow, change 'none' to 'text' */
-    -webkit-user-select: none;                  
-}
+		/* prevent copy paste, to allow, change 'none' to 'text' */
+		-webkit-user-select: none;                  
+	}
 </xmp>
 </div>
 
