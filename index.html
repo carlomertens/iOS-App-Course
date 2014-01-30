@@ -32,7 +32,7 @@
     <div style="text-align: left" class="paddingleft">
         <p><span class="topcoat-icon icon--user"></span>Ludwig Heymbeeck</p>
         <p><span class="topcoat-icon icon--email"></span>ludwigheymbeeck@gmail.com</p>
-        <p><span class="topcoat-icon icon--twitter"></span>@ludwigheymbeeck</p>
+        <!-- <p><span class="topcoat-icon icon--twitter"></span>@ludwigheymbeeck</p> -->
         <p><span class="topcoat-icon icon--github"></span>https://github.com/ludwigheymbeeck</p>
     </div>
 </div>
@@ -280,9 +280,8 @@
 </div>
 
 <div class="slide">
-    <h1>Let's code!</h1>
+    <h1>Let's code! <br>Ontwikkel de eerste App!</h1>
     <ul class="paddingleft">
-		<li>Ontwikkel de eerste App!</li>
 		<li>Voer het volgende commando uit:<br>
 		<strong>cordova create myapp com.syntra.myapp myapp</strong></li>
 		<li>Bestudeer de directory en file structuur die aangemaakt werd</li>
@@ -327,8 +326,10 @@
 <div class="slide">
     <h1>New Challenges For SPAs</h1>
     <ul class="paddingleft">
-        <li>Create large, complex apps in JavaScript</li>
-        <li>Avoid problems in a long lived Document Object Model (DOM)</li>
+        <li>Create large, complex apps in JavaScript
+        <br>(modular strategy)</li>
+        <li>Avoid problems in a long lived Document Object Model (DOM)
+        <br>(memory management)</li>
         <li>Create complex UI in JavaScript</li>
     </ul>
 </div>
@@ -366,7 +367,7 @@ add basic plugins:
 	cordova plugin add org.apache.cordova.device
 	cordova plugin add org.apache.cordova.console
 
-	examine file structure
+examine file structure
 </xmp>
 </div>
 
@@ -387,13 +388,62 @@ add basic plugins:
 </div>
 
 <div class="slide">
+    <h1>Keep Your App Browser Runnable</h1>
+<xmp class="prettyprint xsmall">
+Default JavaScript alert gives away the fact that your application is not native
+
+PhoneGap API:
+
+	navigator.notification.alert(message, alertCallback, [title], [buttonName])
+	
+... but that doesn’t work in your browser
+
+Solution: Abstraction Layer
+
+	Display JavaScript alert when running in the browser
+	Display Native alert when running on device
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Keep Your App Browser Runnable - alert solution</h1>
+<xmp class="prettyprint xsmall">
+function showAlert(message, title) {
+	if(navigator.notification) {
+		navigator.notification.alert(message, null, title, 'OK');
+	} else {
+		alert(title ? (title + ": " + message) : message);
+	}
+}
+</xmp>
+</div>
+
+<div class="slide">
     <h1>Abstract Access - Device Notifications</h1>
     <img width="800" src="images/notifications.png"/>
 </div>
 
 <div class="slide">
-    <h1>Abstract Access - Data Storage</h1>
+    <h1>Abstract Access - Data Storage <br>"Bad" Data Access</h1>
+<xmp class="prettyprint small">
+$.ajax({url: "/api/employee/3"}).done(function(employee) {
+	//Do something with employee
+});
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Abstract Access - Data Storage <br>Overview</h1>
     <img width="800" src="images/data-adapters.png"/>
+</div>
+
+<div class="slide">
+    <h1>Abstract Access - Data Storage <br>"Good" Data Access</h1>
+<xmp class="prettyprint small">
+dataAdapter.findById(3).done(function(employee) {
+	//Do something with employee
+});
+</xmp>
 </div>
 
 <div class="slide">
@@ -689,7 +739,8 @@ details view
 </div>
 
 <div class="slide">
-	<h1>Let's Code! Use Routing</h1>
+	<h1>Let's Code! Use Routing <br>
+	(the # tag)</h1>
 <xmp class="prettyprint">
 Step 1: Create Employee Template
 
@@ -851,7 +902,8 @@ slider.slidePage(new EmployeeView(
 </div>
 
 <div class="slide">
-	<h1>Handle Touch Correctly</h1>
+	<h1>Handle Touch Correctly <br>
+	(hide HTMLish behaviors)</h1>
 <xmp class="prettyprint small">
 body {
 	/* prevent callout to copy image, etc when tap to hold */
@@ -861,7 +913,10 @@ body {
 	-webkit-text-size-adjust: none;             
 
 	/* prevent copy paste, to allow, change 'none' to 'text' */
-	-webkit-user-select: none;                  
+	-webkit-user-select: none; 
+	
+	/* do not show color for link */
+	-webkit-tap-highlight-color:rgba(0,0,0,0);                
 }
 </xmp>
 </div>
@@ -1039,24 +1094,46 @@ $("#page").animate();
 </div>
 
 <div class="slide">
-<h1>Slow</h1>
-<pre class="prettyprint">
+    <h1>Minimizing Browser Reflows <br>Slow</h1>
+<xmp class="prettyprint small">
+$('body').append('<ul id="list"></ul>');
+for (var i = 1; i < 100; i++) {
+    $('#list').append('<li>' + i + '</li>');
+}
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Minimizing Browser Reflows <br>Fast</h1>
+<xmp class="prettyprint small">
+var list = '<ul>';
+for (var i = 1; i < 100; i++) {
+    list += '<li>' + i + '</li>';
+}
+list += '</ul>';
+$('body').append(list);
+</xmp>
+</div>
+
+<div class="slide">
+	<h1>Minimizing Browser Reflows <br>Slow</h1>
+<xmp class="prettyprint small">
 $("#header a.back").on("click", clickHandler);
 $("#header a.back").css("color", "white");
 $("#header a.back").css("text-decoration", "none");
 $("#header a.back").attr("href", "#");
-</pre>
+</xmp>
 </div>
 
 <div class="slide">
-<h1>Fast</h1>
-<pre class="prettyprint">
+	<h1>Minimizing Browser Reflows <br>Fast</h1>
+<xmp class="prettyprint small">
 var $backButton = $("#header a.back");
 $backButton.on("click", clickHandler);
 $backButton.css("color", "white");
 $backButton.css("text-decoration", "none");
 $backButton.attr("href", "#");
-</pre>
+</xmp>
 </div>
 
 <div class="slide">
