@@ -118,10 +118,20 @@
 }
 
 /* Style */
+
 xmp.prettyprint,
 pre.prettyprint {
     font-family: "Source Code", monospace;
     font-size: 28px;
+    text-align: left;
+    display: inline-block;
+    margin: 0px;
+}
+
+p.prettyprint,
+ul.prettyprint,
+div.prettyprint {
+    font-size: 36px;
     text-align: left;
     display: inline-block;
     margin: 0px;
@@ -133,15 +143,24 @@ pre.large {
     font-size: 38px;
 }
 
+ul.small,
 p.small,
 xmp.small,
 pre.small {
     font-size: 22px;
 }
 
+ul.xsmall,
 p.xsmall,
 xmp.xsmall,
 pre.xsmall {
+    font-size: 18px;
+}
+
+p.breadcrumb{
+	position: absolute;
+	top: 5px;
+	left: 45%;
     font-size: 18px;
 }
 
