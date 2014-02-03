@@ -6,10 +6,10 @@
         id        = "com.planetva.appdev"
         version   = "0.1.8">
 
-    <name>App Dev for iOS</name>
+    <name>App Dev</name>
 
     <description>
-        iOS App Development Course - Syntra Limburg
+        iOS App Development Course
     </description>
 
     <author email="ludwigheymbeeck@gmail.com">
